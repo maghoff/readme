@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>README</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="shortcut icon" href="../../../favicon.ico">
+<link href='https://fonts.googleapis.com/css?family=Playfair+Display' rel='stylesheet' type='text/css'>
+<link href='../../../style.css' rel='stylesheet' type='text/css'>
+<style>
+.header {
+	margin: 0;
+	padding: 0 20px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 40px;
+	background: #B0D1FF;
+	line-height: 40px;
+
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.feedTitle {
+	font-family: sans-serif;
+	font-weight: bold;
+	color: white;
+	font-size: 12px;
+	margin-right: 8px;
+}
+a.feedTitle:hover, a.feedTitle:active, a.feedTitle:visited {
+	color: white;
+}
+.articleTitle {
+	font-family: 'Playfair Display', serif;
+	font-size: 18px;
+}
+
+iframe {
+	border: none;
+	margin: 0;
+	padding: 0;
+	position: absolute;
+	top: 40px;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	width: 100%;
+	height: calc(100% - 40px);
+}
+
+</style>
+<script>
+var xhr = new XMLHttpRequest();
+xhr.open("POST", "");
+xhr.send(JSON.stringify({read:true}));
+</script>
+</head>

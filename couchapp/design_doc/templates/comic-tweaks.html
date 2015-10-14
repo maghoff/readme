@@ -1,0 +1,14 @@
+<style>
+img {
+	max-width: 100%;
+	height: auto;
+}
+</style>
+<script>
+/* BAH! script is not allowed in sandbox. Refactor to server side with jsdom? */
+Array.prototype.slice.call(document.querySelectorAll("[title]")).forEach(function (dom) {
+	var title = document.createElement("span");
+	title.textContent = dom.getAttribute("title");
+	dom.parentNode.insertBefore(title, dom.nextSibling());
+});
+</script>

@@ -1,0 +1,43 @@
+[
+	{
+		"from": "",
+		"to": "_list/articles/articles",
+		"query": {
+			"include_docs": "true",
+			"descending": "true",
+			"limit": "7"
+		}
+	}, {
+		"from": "style.css",
+		"to": "style.css"
+	}, {
+		"from": "favicon.ico",
+		"to": "favicon.ico"
+	}, {
+		"from": "article/:date/:articleid/description",
+		"to": "_show/description/:articleid"
+	}, {
+		"from": "article/:date/:articleid/",
+		"to": "_list/one_article/articles",
+		"query": {
+			"include_docs": "true",
+			"key": [ ":date", ":articleid" ]
+		},
+		"method": "GET"
+	}, {
+		"from": "article/:date/:articleid/",
+		"to": "_update/article/:articleid",
+		"method": "POST"
+	}, {
+		"from": "feed/:id",
+		"to": "_show/feed/:id",
+		"method": "GET"
+	}, {
+		"from": "feed/:id",
+		"to": "_update/feed-config/:id",
+		"method": "POST"
+	}, {
+		"from": "feeds",
+		"to": "_list/feeds/feeds/"
+	}
+]
