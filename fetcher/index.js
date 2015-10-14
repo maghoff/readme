@@ -137,7 +137,7 @@ feeds.forEach(function (url) {
 
 function done(items) {
 	var req = request.post({
-		uri: "http://localhost:5986/readme/_bulk_docs",
+		uri: "http://localhost:5984/readme/_bulk_docs",
 		json: true,
 		body: {
 			"docs": items

@@ -12,7 +12,7 @@ var userAgent = [
 ].join(' ');
 
 
-var database = "http://localhost:5986/readme/";
+var database = "http://localhost:5984/readme/";
 
 
 function listFeeds(uri, callback) {
