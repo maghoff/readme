@@ -18,23 +18,12 @@ function (head, req) {
 			}
 
 			return React.createElement("body", null,
-				React.createElement("div",
-					{
-						className: "header"
-					},
-					React.createElement("a",
-						{
-							className: "feedTitle",
-							href: "../../../feed/" + this.props.feed._id
-						},
-						this.props.feed.title
+				React.createElement("div", { className: "header" },
+					React.createElement("h1", null,
+						React.createElement("a", { href: "../../../feed/" + this.props.feed._id }, this.props.feed.title)
 					),
-					React.createElement("a",
-						{
-							className: "articleTitle",
-							href: this.props.article.link
-						},
-						this.props.article.title
+					React.createElement("h2", null,
+						React.createElement("a", { className: "currentPage", href: this.props.article.link }, this.props.article.title)
 					)
 				),
 				React.createElement("iframe", iframeProps)

@@ -18,4 +18,34 @@ a:hover, a:active {
 	height: 40px;
 	background: #B0D1FF;
 	line-height: 40px;
+
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.header h1 {
+	display: inline-block;
+	font-family: sans-serif;
+	font-weight: bold;
+	color: white;
+	font-size: 12px;
+	margin: 0 8px 0 0;
+}
+
+.header h2 {
+	display: inline-block;
+	font-family: 'Playfair Display', serif;
+	font-size: 18px;
+	font-weight: normal;
+	margin: 0;
+	padding: 0;
+}
+
+.header a, .header a:hover, .header a:visited, .header a:active {
+	color: white;
+}
+
+.header a.currentPage {
+	color: inherit;
 }

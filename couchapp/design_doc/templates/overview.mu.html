@@ -7,28 +7,6 @@
 <link href='https://fonts.googleapis.com/css?family=Playfair+Display' rel='stylesheet' type='text/css'>
 <link href='style.css' rel='stylesheet' type='text/css'>
 <style>
-.header h1 {
-	display: inline-block;
-	font-family: sans-serif;
-	font-weight: bold;
-	color: white;
-	font-size: 12px;
-	margin: 0 8px 0 0;
-}
-
-.header h2 {
-	display: inline-block;
-	font-family: 'Playfair Display', serif;
-	font-size: 18px;
-	font-weight: normal;
-	margin: 0;
-	padding: 0;
-}
-
-.header a, .header a:hover, .header a:visited, .header a:active {
-	color: white;
-}
-
 .articleHeadList {
 	max-width: 800px;
 	margin-left: auto;
@@ -49,11 +27,11 @@
 	margin-bottom: 6px;
 	padding: 4px 8px;
 	overflow: hidden;
+	cursor: pointer;
 }
 
-.listItem:hover {
+.listItem:hover, .listItem:active, .listItem:focus {
 	background: #B0D1FF;
-	cursor: pointer;
 }
 
 .read {
@@ -74,7 +52,7 @@ a.articleHead:hover, a.articleHead:active {
 	font-size: 12px;
 	margin-right: 8px;
 }
-.listItem:hover .feedTitle {
+.listItem:hover .feedTitle, .listItem:active .feedTitle, .listItem:focus .feedTitle {
 	color: white;
 }
 
