@@ -1,0 +1,7 @@
+{
+  "private": true,
+  "dependencies": {
+    "dot": "^1.0.3",
+    "react": "^0.14.0"
+  }
+}
