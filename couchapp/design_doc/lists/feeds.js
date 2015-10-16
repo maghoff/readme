@@ -1,5 +1,5 @@
 function (head, req) {
-	var React = require('react/addons');
+	var React = require('lib/react/addons');
 
 	start({
 		headers: {

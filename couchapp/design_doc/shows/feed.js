@@ -1,8 +1,8 @@
 function (doc, req) {
-	var React = require('react/addons');
+	var React = require('lib/react/addons');
 
-	var dot = require('dot');
-	var template = dot.template(this.templates["feed"]);
+	var dot = require('lib/dot');
+	var template = dot.template(this.templates["feed"], null, this.templates);
 
 	var FeedConfig = React.createClass({
 		render: function () {
@@ -23,12 +23,9 @@ function (doc, req) {
 		}
 	});
 
-	start({
-		'content-type': 'text/html; charset=utf-8'
-	});
+	start({ 'content-type': 'text/html; charset=utf-8' });
 	send(
 		template({
-			ddoc: this,
 			feed: doc,
 			body: React.renderToStaticMarkup(
 				React.createElement(FeedConfig, { feed: doc })
