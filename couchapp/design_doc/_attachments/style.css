@@ -25,7 +25,7 @@ a:hover, a:active {
 }
 
 .header h1 {
-	display: inline-block;
+	display: inline;
 	font-family: "DejaVu Sans", sans-serif;
 	font-weight: bold;
 	color: white;
@@ -34,7 +34,7 @@ a:hover, a:active {
 }
 
 .header h2 {
-	display: inline-block;
+	display: inline;
 	font-family: 'Playfair Display', serif;
 	font-size: 18px;
 	font-weight: normal;
