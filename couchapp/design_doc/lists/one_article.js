@@ -7,7 +7,7 @@ function (head, req) {
 				className: "contents",
 				sandbox: ""
 			};
-			if (this.props.feed.open_linked) {
+			if (this.props.feed.open_mode === "embed_linked") {
 				iframeProps.src = this.props.article.link;
 			} else {
 				iframeProps.seamless = "seamless";
@@ -41,7 +41,7 @@ function (head, req) {
 	var article = row.value.article;
 	var feed = row.doc;
 
-	if (feed.open_linked) {
+	if (feed.open_mode === "open_linked") {
 		start({ code: 302, headers: { location: article.link } });
 		send(article.link);
 		return;

@@ -1,6 +1,7 @@
 {
   "private": true,
   "dependencies": {
+    "browserify": "^11.2.0",
     "dot": "^1.0.3",
     "react": "^0.14.0"
   }

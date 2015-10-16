@@ -14,6 +14,9 @@
 		"from": "favicon.ico",
 		"to": "favicon.ico"
 	}, {
+		"from": "all.js",
+		"to": "all.js"
+	}, {
 		"from": "article/:date/:articleid/description",
 		"to": "_show/description/:articleid"
 	}, {

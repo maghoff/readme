@@ -24,6 +24,7 @@
 }
 
 .buttonList {
+	display: block;
 	width: 100%;
 	text-align: center;
 	max-width: 400px;
@@ -43,14 +44,19 @@
 }
 
 .button {
+	display: block;
+	width: 100%;
+	background: none;
+	padding: 0;
 	border: 1px solid #B0D1FF;
 	line-height: 40px;
-
 	font-weight: normal;
-
 	cursor: pointer;
 }
-.button:hover, .button:active, .button.selected {
+.button:focus, .button:hover {
+	font-weight: bold;
+}
+.button:active, .button.selected {
 	background: #B0D1FF;
 	color: white;
 	font-weight: bold;
@@ -83,7 +89,60 @@
 {{?}}
 {{/* <dt>Feed object</dt><dd><pre>{{!JSON.stringify(it.feed, null, '    ')}}</pre></dd> */}}
 </dl>
-{{=it.body}}
+<div id="feed-config">{{=it.feed_config}}</div>
 </div>
+<script src="../all.js"></script>
+<script>
+var React = require('lib/react/addons');
+var FeedConfig = require('lib/component/feed-config');
+
+var feed = {{=JSON.stringify(it.feed)}};
+
+var saveTimeout = 1000;
+var pendingSave = null;
+var saveInProgress = false;
+var dirty = false;
+
+window.addEventListener("beforeunload", function (e) {
+	if (pendingSave || saveInProgress || dirty) {
+		e.returnValue = "Your changes have not been saved. Do you still want to leave the page?";
+		return e.returnValue;
+	}
+});
+
+function save() {
+	pendingSave = null;
+	saveInProgress = true;
+	dirty = false;
+
+	var xhr = new XMLHttpRequest();
+	xhr.open("POST", "");
+	xhr.setRequestHeader('content-type', 'application/json');
+	xhr.onload = function () {
+		saveInProgress = false;
+		if (dirty) pendingSave = setTimeout(save, saveTimeout);
+	};
+	xhr.send(JSON.stringify(feed));
+}
+
+function setItem(key, value) {
+	feed[key] = value;
+
+	dirty = true;
+	if (pendingSave) cancelTimeout(pendingSave);
+	if (!saveInProgress) pendingSave = setTimeout(save, saveTimeout);
+
+	render();
+}
+
+function render() {
+	React.render(
+		React.createElement(FeedConfig, { feed: feed, setItem: setItem }),
+		document.getElementById("feed-config")
+	);
+}
+
+render();
+</script>
 </body>
 </html>
