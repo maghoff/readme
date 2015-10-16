@@ -10,7 +10,9 @@ function (head, req) {
 	send(this.templates["feeds.mu"]);
 
 	var row;
+	send("<ul class=feeds>");
 	while (row = getRow()) {
-		send("<a href='feed/" + row.value._id + "'>"+row.value.title+"</a>");
+		send("<li><a href='feed/" + row.value._id + "'>"+row.value.title+"</a></li>");
 	}
+	send("</ul>");
 }

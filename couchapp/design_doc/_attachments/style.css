@@ -49,3 +49,26 @@ a:hover, a:active {
 .header a.currentPage {
 	color: inherit;
 }
+
+.feeds {
+	margin: 0;
+	padding: 0;
+
+	font-family: sans-serif;
+	font-size: 14px;
+	line-height: 20px;
+}
+.feeds>li {
+	display: inline;
+	margin: 0;
+	padding: 0;
+}
+.feeds>li>a {
+}
+.feeds>li:before {
+	content: " \2022  ";
+	color: #B0D1FF;
+}
+.feeds>li:first-child:before {
+	content: "";
+}
