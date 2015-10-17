@@ -99,4 +99,17 @@ a.articleHead:hover, a.articleHead:active {
 <div class="header">
 <h1>readme</h1><h2>Articles</h2> <h2><a href="feeds">Feeds</a></h2>
 </div>
-<div class="articleHeadList">
+<div class="articleHeadList">{{=it.list}}</div>
+<script>
+function markAsRead(ev) {
+	var xhr = new XMLHttpRequest();
+	xhr.open("POST", ev.target.getAttribute("href"), false);
+	xhr.send(JSON.stringify({read:true}));
+}
+Array.prototype.forEach.call(
+	document.querySelectorAll("a.articleHead[data-open-mode='open_linked']"),
+	function (element) { element.addEventListener("click", markAsRead); }
+);
+</script>
+</body>
+</html>

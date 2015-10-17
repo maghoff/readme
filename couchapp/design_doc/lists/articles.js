@@ -9,7 +9,8 @@ function (head, req) {
 			return React.createElement("a",
 				{
 					className: "listItem articleHead" + (article.read ? " read" : ""),
-					href: "article/" + article.date + "/" + article._id + "/"
+					href: "article/" + article.date + "/" + article._id + "/",
+					"data-open-mode": feed.open_mode || "description"
 				},
 				React.createElement("div", { className: "articleHeadTitle" },
 					React.createElement("span", { className: "feedTitle", }, feed.title),
@@ -47,18 +48,16 @@ function (head, req) {
 	});
 
 
-	var limit = parseInt(req.query.limit || "10", 10);
+	var limit = parseInt(req.query.limit || "20", 10);
 
 	start({ headers: { 'content-type': 'text/html; charset=utf-8' } });
-
-	send(require('templates/overview')());
 
 	var rows = [];
 	var row;
 	while (row = getRow()) rows.push(row);
 
-	send(
-		React.renderToStaticMarkup(
+	send(require('templates/overview')({
+		list: React.renderToStaticMarkup(
 			React.createElement(ArticleList, {
 				rows: rows,
 				total_rows: head.total_rows,
@@ -66,5 +65,5 @@ function (head, req) {
 				limit: limit
 			})
 		)
-	);
+	}));
 }
