@@ -1,10 +1,7 @@
 function (doc, req) {
-	var React = require('lib/react/addons');
+	var React = require('lib/react');
 	var FeedConfig = require('lib/component/feed-config');
-
-	var dot = require('lib/dot');
-	dot.templateSettings.strip = false;
-	var template = dot.template(this.templates["feed"], null, this.templates);
+	var template = require('templates/feed');
 
 	delete doc._revisions;
 

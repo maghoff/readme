@@ -79,7 +79,7 @@
 {{?it.feed.description}}<dt>Description</dt><dd>{{!it.feed.description}}</dd>{{?}}
 {{?it.feed.link}}<dt>Web page</dt><dd><a href="{{!it.feed.link}}">{{!it.feed.link}}</a></dd>{{?}}
 {{?it.feed.feed}}<dt>Cannonical feed URL</dt><dd><a href="{{!it.feed.feed}}">{{!it.feed.feed}}</a></dd>{{?}}
-{{?it.feed.image.url}}
+{{?it.feed.image && it.feed.image.url}}
 	<dt>Image</dt>
 	<dd><img
 		class="feedImage"
@@ -87,13 +87,12 @@
 		{{?it.feed.image.title}}title="{{!it.feed.image.title}}"{{?}}
 	></dd>
 {{?}}
-{{/* <dt>Feed object</dt><dd><pre>{{!JSON.stringify(it.feed, null, '    ')}}</pre></dd> */}}
 </dl>
 <div id="feed-config">{{=it.feed_config}}</div>
 </div>
 <script src="../all.js"></script>
 <script>
-var React = require('lib/react/addons');
+var React = require('lib/react');
 var FeedConfig = require('lib/component/feed-config');
 
 var feed = {{=JSON.stringify(it.feed)}};

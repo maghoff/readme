@@ -1,5 +1,5 @@
 function (head, req) {
-	var React = require('lib/react/addons');
+	var React = require('lib/react');
 
 	var ArticleView = React.createClass({
 		render: function () {
@@ -49,7 +49,7 @@ function (head, req) {
 
 	start({ headers: { 'content-type': 'text/html; charset=utf-8' } });
 
-	send(this.templates["one_article.mu"]);
+	send(require('templates/one_article')());
 
 	send(
 		React.renderToStaticMarkup(

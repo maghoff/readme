@@ -1,5 +1,5 @@
 function (head, req) {
-	var React = require('lib/react/addons');
+	var React = require('lib/react');
 
 	start({
 		headers: {
@@ -7,7 +7,7 @@ function (head, req) {
 		}
 	});
 
-	send(this.templates["feeds.mu"]);
+	send(require('templates/feeds')());
 
 	var row;
 	send("<ul class=feeds>");

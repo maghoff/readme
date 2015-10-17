@@ -1,4 +1,4 @@
-var React = require('lib/react/addons');
+var React = require('lib/react');
 
 module.exports = React.createClass({
 	handleClick: function (ev) {

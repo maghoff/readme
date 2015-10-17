@@ -3,6 +3,7 @@
   "dependencies": {
     "browserify": "^11.2.0",
     "dot": "^1.0.3",
-    "react": "^0.14.0"
+    "react": "^0.14.0",
+    "uglifyjs": "^2.4.10"
   }
 }

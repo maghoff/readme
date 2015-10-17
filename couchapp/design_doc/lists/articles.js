@@ -1,5 +1,5 @@
 function (head, req) {
-	var React = require('lib/react/addons');
+	var React = require('lib/react');
 
 	var ArticleHeader = React.createClass({
 		render: function () {
@@ -49,13 +49,9 @@ function (head, req) {
 
 	var limit = parseInt(req.query.limit || "10", 10);
 
-	start({
-		headers: {
-			'content-type': 'text/html; charset=utf-8'
-		}
-	});
+	start({ headers: { 'content-type': 'text/html; charset=utf-8' } });
 
-	send(this.templates["overview.mu"]);
+	send(require('templates/overview')());
 
 	var rows = [];
 	var row;
