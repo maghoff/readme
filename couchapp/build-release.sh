@@ -22,7 +22,7 @@ do
 		> "$TRG" &
 done
 
-./node_modules/.bin/dottojs -s design_doc/templates/ -d release/templates/ &
+./dottojs.js -s design_doc/templates/ -d release/templates/ &
 
 cp design_doc/templates/*.html release/templates/ &
 

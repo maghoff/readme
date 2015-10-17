@@ -16,7 +16,7 @@ do
 	cp "$SRC" "$TRG"
 done
 
-./node_modules/.bin/dottojs -s design_doc/templates/ -d debug/templates/ &
+./dottojs.js -s design_doc/templates/ -d debug/templates/ &
 
 cp design_doc/templates/*.html debug/templates/ &
 
