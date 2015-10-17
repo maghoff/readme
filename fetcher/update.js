@@ -48,7 +48,7 @@ function getFeed(feed, callback) {
 			return callback(new Error("Unexpected status code " + res.statusCode));
 		}
 
-		var feedparser = new FeedParser({ addmeta: false });
+		var feedparser = new FeedParser({ addmeta: false, feedurl: feed.feed });
 		req.pipe(feedparser);
 
 		var errors = [];
