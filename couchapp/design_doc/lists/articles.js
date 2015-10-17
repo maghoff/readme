@@ -9,7 +9,7 @@ function (head, req) {
 			return React.createElement("a",
 				{
 					className: "listItem articleHead" + (article.read ? " read" : ""),
-					href: "article/" + article.date + "/" + article._id + "/",
+					href: "article/" + (article.seen || article.date) + "/" + article._id + "/",
 					"data-open-mode": feed.open_mode || "description"
 				},
 				React.createElement("div", { className: "articleHeadTitle" },

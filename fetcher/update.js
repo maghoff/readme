@@ -4,6 +4,7 @@ var async = require('async');
 var FeedParser = require('feedparser');
 var request = require('request');
 var crypto = require('crypto');
+var NestedError = require('nested-error');
 
 var userAgent = [
 	'readme/' + require('./package.json').version,
@@ -13,6 +14,7 @@ var userAgent = [
 
 
 var database = "http://localhost:5984/readme/";
+var now = new Date();
 
 
 function listFeeds(uri, callback) {
@@ -108,6 +110,7 @@ function getAllFeeds(feeds, callback) {
 								type: "article",
 								feed: feed._id,
 								guid: item.guid,
+								seen: now,
 								date: date,
 								title: item.title,
 								link: item.link,
@@ -147,7 +150,6 @@ async.waterfall([
 		console.error(err.stack);
 		process.exit(1);
 	}
-//  	console.log(JSON.stringify(data, null, '    '));
 	var newArticles = data.body.filter(function (result) { return result.ok; }).length;
 	console.log("New articles written: " + newArticles);
 });
