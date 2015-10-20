@@ -29,9 +29,12 @@
 	overflow: hidden;
 	cursor: pointer;
 }
-
-.listItem:hover, .listItem:active, .listItem:focus {
+.listItem:hover, .listItem:active {
 	background: #B0D1FF;
+}
+.listItem:focus {
+	outline: none;
+	border: 1px dashed #8099BA;
 }
 
 .read {
@@ -52,7 +55,7 @@ a.articleHead:hover, a.articleHead:active {
 	font-size: 12px;
 	margin-right: 8px;
 }
-.listItem:hover .feedTitle, .listItem:active .feedTitle, .listItem:focus .feedTitle {
+.listItem:hover .feedTitle, .listItem:active .feedTitle {
 	color: white;
 }
 
