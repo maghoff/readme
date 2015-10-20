@@ -25,11 +25,14 @@ function (head, req) {
 			var hasPrev = this.props.offset > 0;
 			var hasNext = this.props.total_rows > (this.props.offset + this.props.rows.length);
 
+			var prevIsFirst = this.props.offset - this.props.limit <= 0;
+
 			return React.createElement("div", null,
 				React.createElement("a",
 					{
 						className: "listItem" + (hasPrev ? "" : " unavailable"),
-						href: "?skip="+(this.props.offset - this.props.limit)
+						href: prevIsFirst ? "." : "?skip="+(this.props.offset - this.props.limit),
+						rel: "prev"
 					},
 					React.createElement("div", { className: "prev" })
 				),
@@ -39,7 +42,8 @@ function (head, req) {
 				React.createElement("a",
 					{
 						className: "listItem" + (hasNext ? "" : " unavailable"),
-						href: "?skip="+(this.props.offset + this.props.limit)
+						href: "?skip="+(this.props.offset + this.props.limit),
+						rel: "next"
 					},
 					React.createElement("div", { className: "next" })
 				)
