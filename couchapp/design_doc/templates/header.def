@@ -1,0 +1,12 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="shortcut icon" href="{{#def.root}}favicon.ico">
+<link href='https://fonts.googleapis.com/css?family=Playfair+Display' rel='stylesheet' type='text/css'>
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="icon" sizes="192x192" href="{{#def.root}}logo-192x192.png">
+<link rel="apple-touch-icon" sizes="192x192" href="{{#def.root}}logo-192x192.png">
+<link rel="apple-touch-icon" sizes="114x114" href="{{#def.root}}logo-114x114.png">
+<link rel="apple-touch-icon" sizes="72x72" href="{{#def.root}}logo-72x72.png">
+<link rel="apple-touch-icon" sizes="57x57" href="{{#def.root}}logo-57x57.png">
+<link rel="manifest" href="{{#def.root}}manifest.json">
+<meta name="theme-color" content="#B0D1FF">
+<link href='{{#def.root}}style.css' rel='stylesheet' type='text/css'>
