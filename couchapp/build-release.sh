@@ -7,6 +7,9 @@ UGLIFYJS="./node_modules/.bin/uglifyjs --screw-ie8 --compress --mangle"
 rm -rf release
 mkdir -p release/{_attachments,lists,shows,templates,updates,views,lib}
 
+# Make changes CWD, so we have to wait for it to finish
+make -j -C logo && cp logo/release/logo*.png release/_attachments
+
 cp -r design_doc/_attachments/* release/_attachments &
 cp design_doc/{_id,rewrites.json} release/ &
 

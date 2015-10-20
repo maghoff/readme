@@ -1,3 +1,5 @@
 node_modules
 couchapp/debug
 couchapp/release
+couchapp/logo/rasterized
+couchapp/logo/release
