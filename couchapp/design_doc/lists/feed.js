@@ -22,7 +22,7 @@ function (head, req) {
 			feed_config: React.renderToString(
 				React.createElement(FeedConfig, { feed: doc })
 			),
-			articles: React.renderToString(
+			articles: React.renderToStaticMarkup(
 				React.createElement(ArticleList, {
 					root: "../",
 					navigation: false,

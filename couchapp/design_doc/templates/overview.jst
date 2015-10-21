@@ -12,7 +12,7 @@
 <script>
 function markAsRead(ev) {
 	var xhr = new XMLHttpRequest();
-	xhr.open("POST", ev.target.getAttribute("href"), false);
+	xhr.open("POST", ev.target.getAttribute("data-post"), false);
 	xhr.send(JSON.stringify({read:true}));
 }
 Array.prototype.forEach.call(
