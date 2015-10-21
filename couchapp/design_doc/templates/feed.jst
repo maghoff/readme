@@ -87,6 +87,10 @@
 </dl>
 <div id="feed-config">{{=it.feed_config}}</div>
 </div>
+<div id="articles" class="articleHeadList">
+<h2>Recent posts</h2>
+{{=it.articles}}
+</div>
 <script src="../all.js"></script>
 <script>
 var React = require('lib/react');
@@ -94,7 +98,7 @@ var FeedConfig = require('lib/component/feed-config');
 
 var feed = {{=JSON.stringify(it.feed)}};
 
-var saveTimeout = 1000;
+var saveTimeout = 750;
 var pendingSave = null;
 var saveInProgress = false;
 var dirty = false;

@@ -38,7 +38,15 @@
 		"method": "POST"
 	}, {
 		"from": "feed/:id",
-		"to": "_show/feed/:id",
+		"to": "_list/feed/articles_by_feed",
+		"query": {
+			"include_docs": "true",
+			"descending": "true",
+			"start_key": [ ":id", {} ],
+			"end_key": [ ":id" ],
+			"limit": "11",
+			"skip": "0"
+		},
 		"method": "GET"
 	}, {
 		"from": "feed/:id",

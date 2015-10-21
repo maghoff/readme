@@ -5,7 +5,7 @@ var ArticleHeader = React.createClass({
 		var article = this.props.row.value.article;
 		var feed = this.props.row.doc;
 
-		var href = "article/" + (article.seen || article.date) + "/" + article._id + "/";
+		var href = this.props.root + "article/" + (article.seen || article.date) + "/" + article._id + "/";
 		if (feed.open_mode === "open_linked") href = article.link;
 
 		return React.createElement("a",

@@ -13,6 +13,8 @@ function (head, req) {
 	send(require('templates/overview')({
 		list: React.renderToStaticMarkup(
 			React.createElement(ArticleList, {
+				root: "",
+				navigation: true,
 				rows: rows,
 				total_rows: head.total_rows,
 				offset: head.offset,

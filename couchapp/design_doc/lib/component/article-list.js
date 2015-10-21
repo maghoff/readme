@@ -9,7 +9,7 @@ var ArticleList = React.createClass({
 		var prevIsFirst = this.props.offset - this.props.limit <= 0;
 
 		return React.createElement("div", null,
-			React.createElement("a",
+			this.props.navigation && React.createElement("a",
 				{
 					className: "listItem" + (hasPrev ? "" : " unavailable"),
 					href: prevIsFirst ? "." : "?skip="+(this.props.offset - this.props.limit),
@@ -18,9 +18,9 @@ var ArticleList = React.createClass({
 				React.createElement("div", { className: "prev" })
 			),
 			this.props.rows.map(function (row) {
-				return React.createElement(ArticleHeader, { key: row.id, row: row });
-			}),
-			React.createElement("a",
+				return React.createElement(ArticleHeader, { key: row.id, row: row, root: this.props.root });
+			}.bind(this)),
+			this.props.navigation && React.createElement("a",
 				{
 					className: "listItem" + (hasNext ? "" : " unavailable"),
 					href: "?skip="+(this.props.offset + this.props.limit),
