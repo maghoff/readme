@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+var url = require('url');
 var async = require('async');
 var FeedParser = require('feedparser');
 var request = require('request');
@@ -95,6 +96,8 @@ function getAllFeeds(feeds, callback) {
 		feeds.rows,
 		function (row, callback) {
 			var feed = row.value;
+			var first_fetch = !feed.date;
+
 			async.waterfall([
 				function (callback) { getFeed(feed, acceptErrors(callback)); },
 				function (data, callback) {
@@ -114,9 +117,33 @@ function getAllFeeds(feeds, callback) {
 								date: date,
 								title: item.title,
 								link: item.link,
-								description: item.description
+								description: item.description,
+								read: first_fetch
 							};
 						});
+
+						if (data.data.meta.image && data.data.meta.image.url) {
+							data.data.meta.image.url = url.resolve(feed.feed, data.data.meta.image.url);
+						}
+
+
+						var newFeed = JSON.parse(JSON.stringify(feed));
+						newFeed.title = data.data.meta.title;
+						newFeed.description = data.data.meta.description;
+						newFeed.link = data.data.meta.link;
+						newFeed.date = feed.date || (data.data.meta.date || new Date()).toISOString();
+						newFeed.image = data.data.meta.image;
+
+						function checkUpdated(oldFeed, newFeed) {
+							var isUpdated = false;
+							for (var key in newFeed) {
+								if (typeof newFeed[key] === "object") isUpdated = isUpdated || checkUpdated(oldFeed[key], newFeed[key]);
+								else isUpdated = isUpdated || (newFeed[key] !== oldFeed[key]);
+							}
+							return isUpdated;
+						}
+
+						if (checkUpdated(feed, newFeed)) documents.push(newFeed);
 					}
 
 					callback(null, documents || []);
