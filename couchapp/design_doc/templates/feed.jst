@@ -4,13 +4,6 @@
 <title>{{!it.feed.title}} &ndash; README</title>
 {{##def.root:../#}}{{#def.header}}
 <style>
-.config {
-	max-width: 600px;
-	margin-left: auto;
-	margin-right: auto;
-	padding: 0 6px;
-}
-
 .configDescription, dt {
 	font-family: 'Playfair Display', serif;
 	font-size: 18px;
@@ -98,7 +91,7 @@ var FeedConfig = require('lib/component/feed-config');
 
 var feed = {{=JSON.stringify(it.feed)}};
 
-var saveTimeout = 750;
+var saveTimeout = 250;
 var pendingSave = null;
 var saveInProgress = false;
 var dirty = false;
@@ -144,5 +137,6 @@ function render() {
 
 render();
 </script>
+{{#def.mark_as_read_script}}
 </body>
 </html>

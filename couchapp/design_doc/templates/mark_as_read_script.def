@@ -1,0 +1,11 @@
+<script>
+function markAsRead(ev) {
+	var xhr = new XMLHttpRequest();
+	xhr.open("POST", ev.currentTarget.getAttribute("data-post"), false);
+	xhr.send(JSON.stringify({read:true}));
+}
+Array.prototype.forEach.call(
+	document.querySelectorAll("a.articleHead[data-open-mode='open_linked']:not([class~='read'])"),
+	function (element) { element.addEventListener("click", markAsRead); }
+);
+</script>
