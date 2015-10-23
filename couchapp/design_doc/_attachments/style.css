@@ -1,4 +1,6 @@
 html, body {
+	font-family: "DejaVu Sans", sans-serif;
+	font-size: 14px;
 	color: #333;
 	margin: 0;
 	padding: 0;
@@ -24,7 +26,7 @@ a:hover, a:active {
 	white-space: nowrap;
 }
 
-h2 {
+h1 {
 	font-family: 'Playfair Display', serif;
 	font-size: 18px;
 	font-weight: normal;
