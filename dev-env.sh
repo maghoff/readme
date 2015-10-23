@@ -21,7 +21,9 @@ curl -X PUT http://localhost:5984/_config/httpd/bind_address -d '"::"'
 
 until curl http://localhost:5984/ ; do sleep 1 ; done
 
-couchapp push couchapp/design_doc/ http://localhost:5984/readme
+pushd couchapp
+./build-debug.sh && couchapp push debug http://localhost:5984/readme
+popd
 
 echo "Running squid3 on 3128 and couchdb on 5984"
 read -p "Press enter to stop"
