@@ -3,17 +3,28 @@ function (head, req) {
 
 	var FeedsList = React.createClass({
 		render: function () {
+			var subscribedFeeds;
 			if (this.props.feeds.length) {
-				return React.createElement("ul", { className: "feeds" },
+				subscribedFeeds = React.createElement("ul", { className: "feeds" },
 					this.props.feeds.map(function (feed) {
 						return React.createElement("li", null,
-							React.createElement("a", { href: "feed/" + feed._id }, feed.title)
+							React.createElement("a", { href: "feed/" + feed._id }, feed.title || feed.feed)
 						);
 					})
 				);
 			} else {
-				return React.createElement("p", null, "You are not subscribed to any feeds");
+				subscribedFeeds = React.createElement("p", null, "You are not subscribed to any feeds");
 			}
+
+			return React.createElement("div", { className: "content" },
+				React.createElement("h1", null, "Subscribed feeds"),
+				subscribedFeeds,
+				React.createElement("hr", null),
+				React.createElement("form", { className: "controlGroupRow", method: "POST" },
+					React.createElement("input", { name: "url", placeholder: "http://..." }),
+					React.createElement("input", { name: "add", type: "submit", value: "Add subscription" })
+				)
+			);
 		}
 	});
 

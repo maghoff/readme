@@ -54,6 +54,11 @@
 		"method": "POST"
 	}, {
 		"from": "feeds",
-		"to": "_list/feeds/feeds/"
+		"to": "_list/feeds/feeds/",
+		"method": "GET"
+	}, {
+		"from": "feeds",
+		"to": "_update/feeds",
+		"method": "POST"
 	}
 ]

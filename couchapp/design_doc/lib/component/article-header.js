@@ -18,7 +18,7 @@ var ArticleHeader = React.createClass({
 				"data-open-mode": feed.open_mode || "description"
 			},
 			React.createElement("div", { className: "articleHeadTitle" },
-				React.createElement("span", { className: "feedTitle", }, feed.title),
+				React.createElement("span", { className: "feedTitle", }, feed.title||feed.feed),
 				React.createElement("span", { className: "articleTitle" }, article.title)
 			)
 		);

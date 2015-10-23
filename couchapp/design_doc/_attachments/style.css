@@ -172,3 +172,32 @@ a.articleHead:hover, a.articleHead:active {
 	visibility: hidden;
 }
 
+.controlGroupRow>input:focus {
+	outline: none;
+	border-color: #8099BA;
+}
+.controlGroupRow>input {
+	background: none;
+	border: 1px solid #B0D1FF;
+	box-sizing: content-box;
+	height: 28px;
+	vertical-align: top;
+	font-size: 12px;
+}
+.controlGroupRow>input:first-child {
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+	padding: 0 10px;
+}
+.controlGroupRow>input:last-child {
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+	padding: 0;
+}
+
+hr {
+	max-width: 30px;
+	border: none;
+	border-bottom: 1px solid #B0D1FF;
+	margin: 30px auto;
+}
