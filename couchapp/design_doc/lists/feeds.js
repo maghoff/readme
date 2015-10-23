@@ -1,18 +1,26 @@
 function (head, req) {
 	var React = require('lib/react');
 
-	start({
-		headers: {
-			'content-type': 'text/html; charset=utf-8'
+	var FeedsList = React.createClass({
+		render: function () {
+			return React.createElement("ul", { className: "feeds" },
+				this.props.feeds.map(function (feed) {
+					return React.createElement("li", null,
+						React.createElement("a", { href: "feed/" + feed._id }, feed.title)
+					);
+				})
+			);
 		}
 	});
 
-	send(require('templates/feeds')());
-
+	var feeds = [];
 	var row;
-	send("<ul class=feeds>");
-	while (row = getRow()) {
-		send("<li><a href='feed/" + row.value._id + "'>"+row.value.title+"</a></li>");
-	}
-	send("</ul>");
+	while (row = getRow()) feeds.push(row.value);
+
+	start({ headers: { 'content-type': 'text/html; charset=utf-8' } });
+	send(require('templates/feeds')({
+		feeds: React.renderToStaticMarkup(
+			React.createElement(FeedsList, { feeds: feeds })
+		)
+	}));
 }
