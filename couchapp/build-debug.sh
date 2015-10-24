@@ -11,7 +11,7 @@ make -j -C logo && cp logo/release/logo*.png debug/_attachments
 cp -r design_doc/_attachments/* debug/_attachments &
 cp design_doc/{_id,rewrites.json} debug/ &
 
-for SRC in $(find design_doc/{lists,shows,templates,updates,views,lib} -iname '*.js' \( -type f -or -type l \))
+for SRC in $(find design_doc -iname '*.js' \( -type f -or -type l \))
 do
 	TRG="debug/$(echo "$SRC" | cut -d/ -f 1 --complement)"
 	echo "$SRC -> $TRG"
