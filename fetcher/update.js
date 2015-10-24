@@ -14,7 +14,7 @@ var userAgent = [
 ].join(' ');
 
 
-var database = "http://localhost:5984/readme/";
+var database = process.argv[2] || "http://localhost:5984/readme/";
 var now = new Date();
 
 
