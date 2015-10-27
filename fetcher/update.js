@@ -13,6 +13,14 @@ var userAgent = [
 	'nodejs/' + process.version
 ].join(' ');
 
+var acceptFeed = [
+	'application/rss+xml',
+	'application/rdf+xml',
+	'application/atom+xml',
+	'application/xml;q=0.2',
+	'text/xml;q=0.1',
+].join(', ');
+
 
 var database = process.argv[2] || "http://localhost:5984/readme/";
 var now = new Date();
@@ -35,7 +43,7 @@ function getFeed(feed, callback) {
 	var req = request({
 		uri: feed.feed,
 		gzip: true,
-		headers: { 'user-agent': userAgent }
+		headers: { 'user-agent': userAgent, 'accept': acceptFeed }
 	});
 
 	req.on('error', function (err) {
