@@ -4,7 +4,7 @@
 <title>{{!it.feed.title}} &ndash; README</title>
 {{##def.root:../#}}{{#def.header}}
 <style>
-.configDescription, dt {
+dt {
 	font-family: 'Playfair Display', serif;
 	font-size: 18px;
 }
@@ -50,6 +50,13 @@
 	background: #B0D1FF;
 	color: white;
 	font-weight: bold;
+}
+
+.button.buttonDanger {
+	border-color: #ED4337;
+}
+.button.buttonDanger:active, .button.buttonDanger.selected {
+	background: #ED4337;
 }
 
 .feedImage {
@@ -128,9 +135,50 @@ function setItem(key, value) {
 	render();
 }
 
+function deleteAll(items, callback) {
+	var xhr = new XMLHttpRequest();
+	xhr.open("POST", "../_bulk_docs");
+	xhr.setRequestHeader("Content-Type", "application/json");
+	xhr.onload = function () {
+		if (xhr.status >= 400) return callback(new Error("Unexpected status code: " + xhr.status));
+		callback();
+	};
+	xhr.onerror = function () { callback(new Error("Network error")); };
+	xhr.send(JSON.stringify({
+		docs: items.map(function (x) { return { _id: x.id, _rev: x.rev, _deleted: true }; })
+	}));
+}
+
+function unsubscribe(callback) {
+	var xhr = new XMLHttpRequest();
+	xhr.open("GET", window.location + "/all");
+	xhr.onload = function () {
+		if (xhr.status >= 400) return callback(new Error("Unexpected status code: " + xhr.status));
+		var allItems = JSON.parse(xhr.responseText);
+		deleteAll(allItems, callback);
+	};
+	xhr.onerror = function () { callback(new Error("Network error")); };
+	xhr.send();
+}
+
+function performUnsubscribe() {
+	unsubscribe(function (err) {
+		if (err) {
+			console.error(err.stack);
+			return;
+		}
+		console.log("Successfully unsubscribed");
+		window.location.href = "../feeds";
+	});
+}
+
 function render() {
 	React.render(
-		React.createElement(FeedConfig, { feed: feed, setItem: setItem }),
+		React.createElement(FeedConfig, {
+			feed: feed,
+			setItem: setItem,
+			unsubscribe: performUnsubscribe
+		}),
 		document.getElementById("feed-config")
 	);
 }

@@ -49,6 +49,17 @@
 		},
 		"method": "GET"
 	}, {
+		"from": "feed/:id/all",
+		"to": "_list/id_and_rev/articles_by_feed",
+		"query": {
+			"include_docs": "true",
+			"descending": "true",
+			"start_key": [ ":id", {} ],
+			"end_key": [ ":id" ],
+			"skip": "0"
+		},
+		"method": "GET"
+	}, {
 		"from": "feed/:id",
 		"to": "_update/feed-config/:id",
 		"method": "POST"
@@ -59,6 +70,10 @@
 	}, {
 		"from": "feeds",
 		"to": "_update/feeds",
+		"method": "POST"
+	}, {
+		"from": "_bulk_docs",
+		"to": "../../_bulk_docs",
 		"method": "POST"
 	}
 ]

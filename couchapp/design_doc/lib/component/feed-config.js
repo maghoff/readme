@@ -6,8 +6,7 @@ module.exports = React.createClass({
 	},
 	render: function () {
 		return React.createElement("div", { className: "configItem" },
-			React.createElement("p", { className: "configDescription" },
-				"When displaying articles from this feed..."),
+			React.createElement("h1", null, "When displaying articles from this feed..."),
 			React.createElement("div", { className: "buttonList" },
 				React.createElement("button",
 					{
@@ -30,6 +29,15 @@ module.exports = React.createClass({
 						onClick: this.handleClick
 					},
 					"Open linked article")
+			),
+			React.createElement("h1", null, "Administer subscription"),
+			React.createElement("div", { className: "buttonList" },
+				React.createElement("button",
+					{
+						className: "button buttonDanger",
+						onClick: this.props.unsubscribe
+					},
+					"Unsubscribe")
 			)
 		);
 	}
