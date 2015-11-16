@@ -8,7 +8,10 @@
 <div class="header">
 <h1>readme</h1><h2>Articles</h2> <h2><a href="feeds">Feeds</a></h2>
 </div>
-<div class="content">{{=it.list}}</div>
+<div class="content">{{?it.list}}{{=it.list}}{{??}}
+<h1>Nothing here</h1>
+<p>Why don't you <a href="feeds">add some feeds</a>?</p>
+{{?}}</div>
 {{#def.mark_as_read_script}}
 </body>
 </html>

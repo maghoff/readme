@@ -13,6 +13,10 @@ a:hover, a:active {
 	text-decoration: underline;
 }
 
+p>a, p>a:hover, p>a:visited, p>a:active {
+	color: #8099BA;
+}
+
 .header {
 	margin: 0;
 	margin-bottom: 20px;

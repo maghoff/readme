@@ -11,7 +11,7 @@ function (head, req) {
 	while (row = getRow()) rows.push(row);
 
 	send(require('templates/overview')({
-		list: React.renderToStaticMarkup(
+		list: rows.length && React.renderToStaticMarkup(
 			React.createElement(ArticleList, {
 				root: "",
 				navigation: true,
