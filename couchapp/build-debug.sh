@@ -2,6 +2,8 @@
 
 set -e
 
+cd "$(dirname $0)"
+
 rm -rf debug
 mkdir -p debug/{_attachments,lists,shows,templates,updates,views,lib}
 

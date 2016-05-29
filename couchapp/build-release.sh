@@ -2,6 +2,8 @@
 
 set -e
 
+cd "$(dirname $0)"
+
 UGLIFYJS="./node_modules/.bin/uglifyjs --screw-ie8 --compress --mangle"
 
 rm -rf release

@@ -3,7 +3,13 @@ language:
  - node_js
 python: 2.7
 node_js: 4
+
 install:
  - pip install couchapp
  - pushd couchapp && npm install && popd
  - pushd fetcher && npm install && popd
+
+script:
+ - ./couchapp/build-debug.sh
+ - ./couchapp/build-release.sh
+
