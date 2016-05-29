@@ -1,14 +1,14 @@
 #!/bin/bash
 
-set -e
+set -euo pipefail
 
 cd "$(dirname $0)"
 
 rm -rf debug
 mkdir -p debug/{_attachments,lists,shows,templates,updates,views,lib}
 
-# Make changes CWD, so we have to wait for it to finish
-make -j -C logo && cp logo/release/logo*.png debug/_attachments
+make -j -C logo
+cp logo/release/logo*.png debug/_attachments
 
 cp -r design_doc/_attachments/* debug/_attachments &
 cp design_doc/{_id,rewrites.json} debug/ &
