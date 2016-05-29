@@ -38,3 +38,6 @@ cp design_doc/templates/*.html release/templates/ &
 	> release/_attachments/all.js &
 
 wait
+
+couchapp push --export release > release.json
+xz < release.json > release.json.xz

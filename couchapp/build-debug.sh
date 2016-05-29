@@ -32,3 +32,6 @@ cp design_doc/templates/*.html debug/templates/ &
 	> debug/_attachments/all.js &
 
 wait
+
+couchapp push --export debug > debug.json
+xz < debug.json > debug.json.xz
