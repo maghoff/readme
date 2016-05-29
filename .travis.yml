@@ -1,0 +1,9 @@
+language:
+ - python
+ - node_js
+python: 2.7
+node_js: 4
+install:
+ - pip install --user couchapp
+ - cd couchapp && npm install
+ - cd fetcher && npm install
