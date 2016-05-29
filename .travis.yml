@@ -13,6 +13,7 @@ addons:
   apt:
     packages:
     - inkscape
+    - pngcrush
 
 script:
  - ./couchapp/build-debug.sh
