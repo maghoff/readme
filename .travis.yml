@@ -9,6 +9,11 @@ install:
  - pushd couchapp && npm install && popd
  - pushd fetcher && npm install && popd
 
+addons:
+  apt:
+    packages:
+    - inkscape
+
 script:
  - ./couchapp/build-debug.sh
  - ./couchapp/build-release.sh
